@@ -10,5 +10,12 @@ const Character = require('../models/character.js');
 
 
 router.get('/api/characters', db.getAllCharacters);
+// router.get('/api/characters/:id', );
+// router.post('/api/characters',);
+// router.put('/api/characters',);
+// router.delete('/api/characters',);
+
+
+
 
 module.exports = router;
