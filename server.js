@@ -26,10 +26,7 @@ const client = new Client({
 
 client.connect();
 
-client.query('SELECT * FROM characters', (err,res) => {
-  console.log(res.rows);
-  client.end();
-});
+
 
 //--------------------
 // Middleware
@@ -56,14 +53,19 @@ app.use(session({
 const characterController = require('./controllers/character.js');
 app.use(characterController);
 
-// app.get('/', (req, res) => {
-//   res.send('hello world.')
+// // Blank array
+// data = [];
+// // Database Query
+// client.query('SELECT * FROM characters', (err,res) => {
+//   console.log(res.rows);
+//   data = res.rows;
+//   client.end();
 // });
+// // .get in relation to query
 
 app.get('/', (req, res) => {
-  console.log(query);
-  res.send(query)
-})
+  res.send('main page');
+});
 
 
 //--------------------
