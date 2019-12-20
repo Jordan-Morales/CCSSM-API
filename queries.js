@@ -20,10 +20,10 @@ let db = pgp(connection);
 
 const getAllCharacters = (req, res, next) => {
   db.any('SELECT * FROM characters')
-    .then((data) => {
+    .then((response) => {
       res.status(200)
         .json({
-          data: data.data
+          data: (response)
         });
     })
     .catch((err) => {
