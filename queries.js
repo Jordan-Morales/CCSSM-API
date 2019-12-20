@@ -23,9 +23,7 @@ const getAllCharacters = (req, res, next) => {
     .then((data) => {
       res.status(200)
         .json({
-          status: 'success',
-          data: data,
-          message: 'retrieved all characters'
+          data: data
         });
     })
     .catch((err) => {
