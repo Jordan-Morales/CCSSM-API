@@ -7,8 +7,6 @@ const methodOverride = require('method-override');
 const app = express()
 const session = require('express-session')
 require('dotenv').config();
-const Sequelize = require('sequelize');
-
 //--------------------
 // PORT
 //--------------------
@@ -19,25 +17,19 @@ const PORT = process.env.PORT
 // DATABASE
 //--------------------
 
-const DB = process.env.DB
-// console.log(DB);
+const {Pool,Client} = require('pg');
+const connectionString = process.env.DB;
 
-const sequelize = new Sequelize(DB);
+const client = new Client({
+  connectionString:connectionString
+})
 
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('sql server connected');
-//   })
-//   .catch((err) => {
-//     console.log('sql server connection error: ', err);
-//   })
+client.connect();
 
-
-// // Error / success
-// db.on('error', (err) => console.log(err.message + ' is server not running?'));
-// db.on('connected', () => console.log('server connected'))
-// db.on('disconnected', () => console.log('server disconnected'));
+client.query('SELECT * FROM characters', (err,res) => {
+  console.log(res.rows);
+  client.end();
+});
 
 //--------------------
 // Middleware
@@ -69,7 +61,8 @@ app.use(characterController);
 // });
 
 app.get('/', (req, res) => {
-  res.json()
+  console.log(query);
+  res.send(query)
 })
 
 

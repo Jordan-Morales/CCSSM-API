@@ -1,0 +1,97 @@
+const pg = require('pg');
+const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/todo';
+
+const client = new pg.Client(connectionString);
+client.connect();
+const query = client.query(
+  'CREATE TABLE items(id SERIAL PRIMARY KEY, text VARCHAR(40) not null, complete BOOLEAN)');
+query.on('end', () => { client.end(); });
+
+
+//--------------------
+// DATABASE
+//--------------------
+
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log('sql server connected');
+//   })
+//   .catch((err) => {
+//     console.log('sql server connection error: ', err);
+//   })
+
+
+// const Sequelize = require('sequelize');
+
+// const DB = process.env.DB
+// const sequelize = new Sequelize(DB);
+
+
+// const Op = Sequelize.Op;
+
+// router.get('/character/', (req, res) => {
+//     sequelize.query("SELECT * FROM characters", (err, results, fields) => {
+//       console.log(results);
+//     })
+// });
+
+
+// const Sequelize = require('sequelize');
+// const DB = process.env.DB
+// const sequelize = new Sequelize(DB);
+
+// const Model = Sequelize.Model;
+// class Character extends Model {}
+// Character.init({
+//   name: Sequelize.STRING,
+//   allowNull: false
+// }, {
+//   sequalize,
+//   modelName: 'character'
+// })
+
+// const Character = sequelize.define('character', {
+//   name: {
+//     type: Sequelize.STRING,
+//     allowNull: false
+//   }
+// }, {
+//   //options
+// });
+
+// module.export = Character;
+
+////// PG
+
+const pg = require('pg');
+const connectionString = process.env.DB;
+
+const results = [];
+
+pg.connect(connectionString, (err, client, done) => {
+  if (err) {
+    done();
+    console.log(err);
+    return res.status(500).json({success: false, data: err})
+  }
+  const query = client.query('SELECT * FROM characters;');
+
+  query.on('row', (row) => {
+    results.push(row);
+  });
+
+  query.on('end', () => {
+    done();
+    return res.json(results);
+
+  });
+});
+
+const pg = require('pg');
+const connectionString = process.env.DB;
+
+const client = new pg.Client(connectionString);
+client.connect();
+const query = client.query(
+  'SELECT * FROM characters');
