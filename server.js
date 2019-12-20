@@ -7,6 +7,7 @@ const methodOverride = require('method-override');
 const app = express()
 const session = require('express-session')
 require('dotenv').config();
+
 //--------------------
 // PORT
 //--------------------
@@ -17,15 +18,14 @@ const PORT = process.env.PORT
 // DATABASE
 //--------------------
 
-const {Pool,Client} = require('pg');
-const connectionString = process.env.DB;
-
-const client = new Client({
-  connectionString:connectionString
-})
-
-client.connect();
-
+// const {Pool,Client} = require('pg');
+// const connectionString = process.env.DB;
+//
+// const client = new Client({
+//   connectionString:connectionString
+// })
+//
+// client.connect();
 
 
 //--------------------
