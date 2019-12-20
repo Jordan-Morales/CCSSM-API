@@ -21,15 +21,16 @@ let db = pgp(connection);
 const getAllCharacters = (req, res, next) => {
   db.any('SELECT * FROM characters')
     .then((data) => {
-      res.status(200)
+      res.
         .json({
-          data: data
+          data: data.data
         });
     })
     .catch((err) => {
       return next(err)
     });
 }
+
 
 
 module.exports = {
