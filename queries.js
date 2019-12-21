@@ -15,7 +15,6 @@ let connection = {
   ssl: true
 }
 
-
 let db = pgp(connection);
 
 const getAllCharacters = (req, res, next) => {
@@ -31,8 +30,43 @@ const getAllCharacters = (req, res, next) => {
     });
 }
 
+const getSingleCharacter = (req, res, next) => {
+  let charID = parseInt(req.params.id);
+  db.one('SELECT * FROM characters WHERE id = $1', charID)
+    .then((data) => {
+      res.json({
+          data: (data)
+        });
+    })
+    .catch((err) => {
+      return next(err)
+    });
+}
+
+const createCharacter = (req, res, next) => {
+  // const {public, name, species, age, gender, health, attack, defense, speed, magic, ability} = req.body
+  req.body.age = parseInt(req.body.age);
+  req.body.health = parseInt(req.body.health);
+  req.body.attack = parseInt(req.body.attack);
+  req.body.defense = parseInt(req.body.defense);
+  req.body.speed = parseInt(req.body.speed);
+  req.body.magic = parseInt(req.body.magic);
+  // console.log(JSON.stringify(req.body));
+  console.log(req.body);
+
+
+  db.none('INSERT INTO characters (public, name, species, age, gender, health, attack, defense, speed, magic, ability)' + ' VALUES ($(public), $(name), $(species), $(age), $(gender), $(health), $(attack)0, $(defense), $(speed), $(magic), $(ability));', req.body)
+    .then(() => {
+      // res.status(200)
+    })
+    .catch((err) => {
+      return next(err)
+    });
+}
 
 
 module.exports = {
-  getAllCharacters: getAllCharacters
+  getAllCharacters: getAllCharacters,
+  getSingleCharacter: getSingleCharacter,
+  createCharacter: createCharacter
 }

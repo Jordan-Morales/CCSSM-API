@@ -95,3 +95,8 @@ const client = new pg.Client(connectionString);
 client.connect();
 const query = client.query(
   'SELECT * FROM characters');
+
+
+
+
+${public}, ${name}, ${species}, ${age}, ${gender}, ${health}, ${attack}, ${defense}, ${speed}, ${magic}, ${ability}

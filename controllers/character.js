@@ -10,10 +10,10 @@ const Character = require('../models/character.js');
 
 
 router.get('/api/characters', db.getAllCharacters);
-// router.get('/api/characters/:id', );
-// router.post('/api/characters',);
-// router.put('/api/characters',);
-// router.delete('/api/characters',);
+router.get('/api/characters/:id', db.getSingleCharacter);
+router.post('/api/character', db.createCharacter);
+// router.put('/api/characters', db.updateCharacter);
+// router.delete('/api/characters', db.removeCharacter);
 
 
 

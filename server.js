@@ -6,6 +6,7 @@ const express = require('express');
 const methodOverride = require('method-override');
 const app = express()
 const session = require('express-session')
+const bodyParser = require('body-parser')
 require('dotenv').config();
 
 //--------------------
@@ -36,6 +37,12 @@ const PORT = process.env.PORT
 app.use(express.static('public'));
 //urlencoding false
 app.use(express.urlencoded( {extended: false} ));
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+
 // opens method override function
 app.use(methodOverride('_method'));
 // open session
