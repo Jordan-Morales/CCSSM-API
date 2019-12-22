@@ -97,6 +97,16 @@ const query = client.query(
   'SELECT * FROM characters');
 
 
-
-
+It didn't like this format.
 ${public}, ${name}, ${species}, ${age}, ${gender}, ${health}, ${attack}, ${defense}, ${speed}, ${magic}, ${ability}
+
+
+// // Blank array
+// data = [];
+// // Database Query
+// client.query('SELECT * FROM characters', (err,res) => {
+//   console.log(res.rows);
+//   data = res.rows;
+//   client.end();
+// });
+// // .get in relation to query

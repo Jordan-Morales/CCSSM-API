@@ -3,18 +3,15 @@ const express = require('express');
 const router = express.Router();
 const db = require('../queries');
 // Model
-const monster = require('../models/user.js');
+const User = require('../models/user.js');
 
 
-// Routes
+// // Routes
 
-
-// router.get('/api/users', db.getAllMonsters);
-router.get('/api/user/:id', db.getSingleMonster);
-router.post('/api/user', db.createMonster);
-// router.put('/api/user/:id', db.updateMonster);
-// router.delete('/api/user/:id', db.removeMonster);
-
-
+// router.get('/api/users', db.getAllUsers);
+router.get('/api/user/:id', db.getSingleUser);
+router.post('/api/user', db.createUser);
+// router.put('/api/user/:id', db.updateUser);
+// router.delete('/api/user/:id', db.removeUser);
 
 module.exports = router;

@@ -65,15 +65,6 @@ app.use(monsterController);
 
 const userController = require('./controllers/user.js');
 app.use(userController);
-// // Blank array
-// data = [];
-// // Database Query
-// client.query('SELECT * FROM characters', (err,res) => {
-//   console.log(res.rows);
-//   data = res.rows;
-//   client.end();
-// });
-// // .get in relation to query
 
 app.get('/', (req, res) => {
   res.send('main page');

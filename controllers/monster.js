@@ -3,10 +3,10 @@ const express = require('express');
 const router = express.Router();
 const db = require('../queries');
 // Model
-const monster = require('../models/monster.js');
+const Monster = require('../models/monster.js');
 
 
-// Routes
+// // Routes
 
 
 router.get('/api/monsters', db.getAllMonsters);

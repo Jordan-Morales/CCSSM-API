@@ -6,7 +6,7 @@ const db = require('../queries');
 const Character = require('../models/character.js');
 
 
-// Routes
+// // Routes
 
 
 router.get('/api/characters', db.getAllCharacters);
