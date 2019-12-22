@@ -12,7 +12,7 @@ const Character = require('../models/character.js');
 router.get('/api/characters', db.getAllCharacters);
 router.get('/api/characters/:id', db.getSingleCharacter);
 router.post('/api/character', db.createCharacter);
-// router.put('/api/characters', db.updateCharacter);
+router.put('/api/character/:id', db.updateCharacter);
 // router.delete('/api/characters', db.removeCharacter);
 
 

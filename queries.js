@@ -17,6 +17,7 @@ let connection = {
 
 let db = pgp(connection);
 
+//GET ALL ROUTE
 const getAllCharacters = (req, res, next) => {
   db.any('SELECT * FROM characters')
     .then((response) => {
@@ -30,6 +31,7 @@ const getAllCharacters = (req, res, next) => {
     });
 }
 
+//GET SINGLE ROUTE
 const getSingleCharacter = (req, res, next) => {
   let charID = parseInt(req.params.id);
   db.one('SELECT * FROM characters WHERE id = $1', charID)
@@ -43,30 +45,37 @@ const getSingleCharacter = (req, res, next) => {
     });
 }
 
+//POST ROUTE
 const createCharacter = (req, res, next) => {
-  // const {public, name, species, age, gender, health, attack, defense, speed, magic, ability} = req.body
-  req.body.age = parseInt(req.body.age);
-  req.body.health = parseInt(req.body.health);
-  req.body.attack = parseInt(req.body.attack);
-  req.body.defense = parseInt(req.body.defense);
-  req.body.speed = parseInt(req.body.speed);
-  req.body.magic = parseInt(req.body.magic);
-  // console.log(JSON.stringify(req.body));
-  console.log(req.body);
-
-
   db.none('INSERT INTO characters (public, name, species, age, gender, health, attack, defense, speed, magic, ability)' + ' VALUES ($(public), $(name), $(species), $(age), $(gender), $(health), $(attack)0, $(defense), $(speed), $(magic), $(ability));', req.body)
     .then(() => {
-      // res.status(200)
+      res.status(200)
+      .json({
+          status: 'success'
+        });
     })
     .catch((err) => {
       return next(err)
     });
 }
 
+const updateCharacter = (req, res, next) => {
+  console.log(req.body);
+  db.none('UPDATE characters SET public=$1, name=$2, species=$3, age=$4, gender=$5, health=$6, attack=$7, defense=$8, speed=$9, magic=$10, ability=$11 WHERE id=$12', [req.body.public, req.body.name, req.body.species, parseInt(req.body.age), req.body.gender, parseInt(req.body.health), parseInt(req.body.attack), parseInt(req.body.defense), parseInt(req.body.speed), parseInt(req.body.magic), req.body.ability, parseInt(req.body.id)])
+    .then(() => {
+      res.status(200)
+      .json({
+          status: 'success'
+        });
+    })
+    .catch((err) => {
+      return next(err)
+    });
+}
 
 module.exports = {
   getAllCharacters: getAllCharacters,
   getSingleCharacter: getSingleCharacter,
-  createCharacter: createCharacter
+  createCharacter: createCharacter,
+  updateCharacter: updateCharacter
 }
