@@ -62,6 +62,9 @@ app.use(characterController);
 
 const monsterController = require('./controllers/monster.js');
 app.use(monsterController);
+
+const userController = require('./controllers/user.js');
+app.use(userController);
 // // Blank array
 // data = [];
 // // Database Query

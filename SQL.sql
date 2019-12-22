@@ -1,3 +1,4 @@
+-- SQL SEED DATA 
 CREATE TABLE characters (
   ID SERIAL PRIMARY KEY,
     public BOOLEAN,
