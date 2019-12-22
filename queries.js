@@ -60,7 +60,7 @@ const createCharacter = (req, res, next) => {
 }
 
 const updateCharacter = (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   db.none('UPDATE characters SET public=$1, name=$2, species=$3, age=$4, gender=$5, health=$6, attack=$7, defense=$8, speed=$9, magic=$10, ability=$11 WHERE id=$12', [req.body.public, req.body.name, req.body.species, parseInt(req.body.age), req.body.gender, parseInt(req.body.health), parseInt(req.body.attack), parseInt(req.body.defense), parseInt(req.body.speed), parseInt(req.body.magic), req.body.ability, parseInt(req.body.id)])
     .then(() => {
       res.status(200)
@@ -73,9 +73,24 @@ const updateCharacter = (req, res, next) => {
     });
 }
 
+const removeCharacter = (req, res, next) => {
+  let charID = parseInt(req.body.id);
+  db.result('DELETE FROM characters WHERE id = $1', charID)
+  .then(() => {
+    res.status(200)
+    .json({
+        status: 'success'
+      });
+  })
+  .catch((err) => {
+    return next(err)
+  });
+}
+
 module.exports = {
   getAllCharacters: getAllCharacters,
   getSingleCharacter: getSingleCharacter,
   createCharacter: createCharacter,
-  updateCharacter: updateCharacter
+  updateCharacter: updateCharacter,
+  removeCharacter: removeCharacter
 }

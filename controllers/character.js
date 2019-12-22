@@ -13,7 +13,7 @@ router.get('/api/characters', db.getAllCharacters);
 router.get('/api/characters/:id', db.getSingleCharacter);
 router.post('/api/character', db.createCharacter);
 router.put('/api/character/:id', db.updateCharacter);
-// router.delete('/api/characters', db.removeCharacter);
+router.delete('/api/character/:id', db.removeCharacter);
 
 
 
