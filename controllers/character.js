@@ -10,7 +10,7 @@ const Character = require('../models/character.js');
 
 
 router.get('/api/characters', db.getAllCharacters);
-router.get('/api/characters/:id', db.getSingleCharacter);
+router.get('/api/character/:id', db.getSingleCharacter);
 router.post('/api/character', db.createCharacter);
 router.put('/api/character/:id', db.updateCharacter);
 router.delete('/api/character/:id', db.removeCharacter);

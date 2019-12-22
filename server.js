@@ -60,6 +60,8 @@ app.use(session({
 const characterController = require('./controllers/character.js');
 app.use(characterController);
 
+const monsterController = require('./controllers/monster.js');
+app.use(monsterController);
 // // Blank array
 // data = [];
 // // Database Query
