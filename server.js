@@ -6,6 +6,7 @@ const express = require('express');
 const methodOverride = require('method-override');
 const app = express()
 const session = require('express-session')
+const bodyParser = require('body-parser')
 require('dotenv').config();
 
 //--------------------
@@ -36,6 +37,12 @@ const PORT = process.env.PORT
 app.use(express.static('public'));
 //urlencoding false
 app.use(express.urlencoded( {extended: false} ));
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+
 // opens method override function
 app.use(methodOverride('_method'));
 // open session
@@ -53,15 +60,11 @@ app.use(session({
 const characterController = require('./controllers/character.js');
 app.use(characterController);
 
-// // Blank array
-// data = [];
-// // Database Query
-// client.query('SELECT * FROM characters', (err,res) => {
-//   console.log(res.rows);
-//   data = res.rows;
-//   client.end();
-// });
-// // .get in relation to query
+const monsterController = require('./controllers/monster.js');
+app.use(monsterController);
+
+const userController = require('./controllers/user.js');
+app.use(userController);
 
 app.get('/', (req, res) => {
   res.send('main page');
