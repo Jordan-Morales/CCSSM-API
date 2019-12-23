@@ -6,3 +6,4 @@
 - pg-promise v5.x
 - PostgreSQL v9.4
 - Bluebird v3.x
+- cors
