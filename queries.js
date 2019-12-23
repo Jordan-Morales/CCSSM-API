@@ -77,7 +77,7 @@ const updateCharacter = (req, res, next) => {
 const removeCharacter = (req, res, next) => {
   console.log(req.body);
   console.log(req.body.id);
-  let charID = parseInt(req.body.id);
+  let charID = req.body.id.id;
   db.result('DELETE FROM characters WHERE id = $1', charID)
   .then(() => {
     res.status(200)
