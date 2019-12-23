@@ -52,6 +52,12 @@ app.use(session({
   saveUninitialized: false
 }))
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://complete-compendium.herokuapp.com/");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 //--------------------
 //Routes
 //--------------------
