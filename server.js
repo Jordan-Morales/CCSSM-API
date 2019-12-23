@@ -5,6 +5,7 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const app = express()
+const cors = require('cors')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 require('dotenv').config();
@@ -32,7 +33,7 @@ const PORT = process.env.PORT
 //--------------------
 // Middleware
 //--------------------
-
+app.use(cors());
 // open public folder
 app.use(express.static('public'));
 //urlencoding false
@@ -59,14 +60,14 @@ app.use(function(req, res, next) {
   // live site access cors free
   // res.header("Access-Control-Allow-Origin", "https://complete-compendium.herokuapp.com");
 
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept", "Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS", );
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
 //--------------------
 //Routes
 //--------------------
-
+app.options('*', cors())
 //controllers
 const characterController = require('./controllers/character.js');
 app.use(characterController);
