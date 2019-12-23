@@ -59,7 +59,7 @@ app.use(function(req, res, next) {
   // live site access cors free
   // res.header("Access-Control-Allow-Origin", "https://complete-compendium.herokuapp.com");
 
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept", "Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS", );
   next();
 });
 
