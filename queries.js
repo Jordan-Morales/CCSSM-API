@@ -173,7 +173,7 @@ const getSingleUser = (req, res, next) => {
   db.one('SELECT * FROM users WHERE username = $1', username)
     .then((data) => {
       let pulledPassword = data.password;
-      hashPassword = bcrypt.compareSync(password, pulledPassword);
+      let hashPassword = bcrypt.compareSync(password, pulledPassword);
       if (hashPassword) {
         res.json({
             status: 'valid login',
