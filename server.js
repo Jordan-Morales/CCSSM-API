@@ -80,7 +80,7 @@ const userController = require('./controllers/user.js');
 app.use(userController);
 
 app.get('/', (req, res) => {
-  res.send(req.body);
+  res.send('main page');
 });
 
 
