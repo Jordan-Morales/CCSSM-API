@@ -188,7 +188,10 @@ const getSingleUser = (req, res, next) => {
       }
     })
     .catch((err) => {
-      return next(err)
+        res.json({
+          status: 'login failed'
+        })
+      // return next(err)
     });
 }
 
