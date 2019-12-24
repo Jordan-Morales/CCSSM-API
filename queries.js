@@ -172,8 +172,12 @@ const getSingleUser = (req, res, next) => {
   hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   db.one('SELECT * FROM users WHERE username = $1', username)
     .then((data) => {
+      console.log(password);
       console.log(data);
-      if (data.password === hashPassword) {
+      let pulledPassword = data.password;
+      console.log(hashPassword);
+      console.log(pulledPassword);
+      if (pulledPassword === hashPassword) {
         res.json({
             status: 'valid login',
             data: data
