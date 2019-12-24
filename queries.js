@@ -172,12 +172,14 @@ const getSingleUser = (req, res, next) => {
   db.one('SELECT * FROM users WHERE username = $1', username)
     .then((data) => {
       console.log(data);
-      if (res.password === req.body.password) {
+      if (data.password === req.body.password) {
         res.json({
-            status: 'valid login'
+            status: 'valid login',
+            data: data
           });
       } else {
         res.json({
+          status: 'invalid login',
           status: data
         })
       }
