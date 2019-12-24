@@ -16,6 +16,8 @@ let connection = {
 }
 let db = pgp(connection);
 
+const bcrypt = require('bcrypt')
+
 // GET ALL CHARACTERS
 const getAllCharacters = (req, res, next) => {
   db.any('SELECT * FROM characters')
@@ -166,7 +168,7 @@ const removeMonster = (req, res, next) => {
 // GET A USER
 const getSingleUser = (req, res, next) => {
   let charID = parseInt(req.params.id);
-  db.one('SELECT * FROM characters WHERE id = $1', charID)
+  db.one('SELECT * FROM users WHERE id = $1', charID)
     .then((data) => {
       res.json({
           data: (data)
@@ -179,7 +181,8 @@ const getSingleUser = (req, res, next) => {
 
 // CREATE A USER
 const createUser = (req, res, next) => {
-  db.none('INSERT INTO user (name, username, email, password)' + ' VALUES ($(name), $(username), $(email), $(password));', req.body)
+  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+  db.none('INSERT INTO users (name, username, email, password)' + ' VALUES ($(name), $(username), $(email), $(password));', req.body)
     .then(() => {
       res.status(200)
       .json({
