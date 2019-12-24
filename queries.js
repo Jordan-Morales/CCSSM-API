@@ -46,7 +46,7 @@ const getSingleCharacter = (req, res, next) => {
 
 // CREATE A NEW CHARACTER
 const createCharacter = (req, res, next) => {
-  db.none('INSERT INTO characters (public, name, species, age, gender, health, attack, defense, speed, magic, ability)' + ' VALUES ($(public), $(name), $(species), $(age), $(gender), $(health), $(attack)0, $(defense), $(speed), $(magic), $(ability));', req.body)
+  db.none('INSERT INTO characters (public, name, species, age, gender, health, attack, defense, speed, magic, ability)' + ' VALUES ($(public), $(name), $(species), $(age), $(gender), $(health), $(attack), $(defense), $(speed), $(magic), $(ability));', req.body)
     .then(() => {
       res.status(200)
       .json({

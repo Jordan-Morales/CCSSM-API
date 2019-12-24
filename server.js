@@ -7,6 +7,7 @@ const methodOverride = require('method-override');
 const app = express()
 const cors = require('cors')
 const session = require('express-session')
+const bcrypt = require('bcrypt')
 const bodyParser = require('body-parser')
 require('dotenv').config();
 
@@ -79,7 +80,7 @@ const userController = require('./controllers/user.js');
 app.use(userController);
 
 app.get('/', (req, res) => {
-  res.send('main page');
+  res.send(req.body);
 });
 
 
