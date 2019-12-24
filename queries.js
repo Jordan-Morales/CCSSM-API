@@ -167,12 +167,19 @@ const removeMonster = (req, res, next) => {
 
 // GET A USER
 const getSingleUser = (req, res, next) => {
-  let charID = parseInt(req.params.id);
-  db.one('SELECT * FROM users WHERE id = $1', charID)
+  let username = req.body.username;
+  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+  db.one('SELECT * FROM users WHERE username = $1', username)
     .then((data) => {
-      res.json({
-          data: (data)
-        });
+      if (data.password === req.body.password) {
+        res.json({
+            status: 'valid login'
+          });
+      } else {
+        res.json({
+          status: 'invalid login'
+        })
+      }
     })
     .catch((err) => {
       return next(err)

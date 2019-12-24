@@ -9,7 +9,7 @@ const User = require('../models/user.js');
 // // Routes
 
 // router.get('/api/users', db.getAllUsers);
-router.get('/user/:id', db.getSingleUser);
+router.get('/user', db.getSingleUser);
 router.post('/user', db.createUser);
 // router.put('/api/user/:id', db.updateUser);
 // router.delete('/api/user/:id', db.removeUser);
