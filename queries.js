@@ -169,15 +169,12 @@ const removeMonster = (req, res, next) => {
 const getSingleUser = (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
-  hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+
   db.one('SELECT * FROM users WHERE username = $1', username)
     .then((data) => {
-      console.log(password);
-      console.log(data);
       let pulledPassword = data.password;
-      console.log(hashPassword);
-      console.log(pulledPassword);
-      if (pulledPassword === hashPassword) {
+      hashPassword = bcrypt.compareSync(password, pulledPassword);
+      if (hashPassword) {
         res.json({
             status: 'valid login',
             data: data
