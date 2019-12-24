@@ -179,7 +179,8 @@ const getSingleUser = (req, res, next) => {
           });
       } else {
         res.json({
-          status: 'invalid login'
+          status: 'invalid login',
+          status: data
         })
       }
     })
