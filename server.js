@@ -55,10 +55,10 @@ app.use(session({
 
 app.use(function(req, res, next) {
   //local host access cors free
-  // res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
 
   // live site access cors free
-  res.header("Access-Control-Allow-Origin", "https://complete-compendium.herokuapp.com");
+  // res.header("Access-Control-Allow-Origin", "https://complete-compendium.herokuapp.com");
 
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();

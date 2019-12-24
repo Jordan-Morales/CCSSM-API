@@ -75,8 +75,8 @@ const updateCharacter = (req, res, next) => {
 
 // REMOVE A CHARACTER BY ID
 const removeCharacter = (req, res, next) => {
-  console.log(req.body);
-  console.log(req.body.id);
+  // console.log(req.body);
+  // console.log(req.body.id);
   let charID = req.body.id.id;
   db.result('DELETE FROM characters WHERE id = $1', charID)
   .then(() => {
@@ -150,7 +150,7 @@ const updateMonster = (req, res, next) => {
 
 // DELETE A MONSTER BY ID
 const removeMonster = (req, res, next) => {
-  let charID = parseInt(req.body.id);
+  let charID = req.body.id.id;
   db.result('DELETE FROM monsters WHERE id = $1', charID)
   .then(() => {
     res.status(200)
