@@ -177,7 +177,10 @@ const getSingleUser = (req, res, next) => {
       if (hashPassword) {
         res.json({
             status: 'valid login',
-            data: data
+            data: {
+              username: data.username,
+              name: data.name
+            }
           });
       } else {
         res.json({
