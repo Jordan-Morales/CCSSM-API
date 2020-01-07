@@ -1,7 +1,7 @@
--- SQL SEED DATA 
+-- SQL SEED DATA
 CREATE TABLE characters (
   ID SERIAL PRIMARY KEY,
-    public BOOLEAN,
+    public VARCHAR,
   name VARCHAR,
   species VARCHAR,
   age INTEGER,
@@ -15,14 +15,14 @@ CREATE TABLE characters (
 );
 
 INSERT INTO characters (public, name, species, age, gender, health, attack, defense, speed, magic, ability)
-  VALUES (FALSE, 'James', 'Elf', 18, 'NB', 50, 20, 20, 15, 16, 'Sword-Slash');
+  VALUES ('', 'James', 'Elf', 18, 'NB', 50, 20, 20, 15, 16, 'Sword-Slash');
 
 INSERT INTO characters (public, name, species, age, gender, health, attack, defense, speed, magic, ability)
-  VALUES (TRUE, 'Julia', 'Dwarf', 25, 'F', 75, 18, 17, 16, 22, 'Magic Arrows');
+  VALUES ('', 'Julia', 'Dwarf', 25, 'F', 75, 18, 17, 16, 22, 'Magic Arrows');
 
 CREATE TABLE monsters (
   ID SERIAL PRIMARY KEY,
-    public BOOLEAN,
+    public VARCHAR,
   name VARCHAR,
   species VARCHAR,
     health INTEGER,
@@ -34,10 +34,10 @@ CREATE TABLE monsters (
 );
 
 INSERT INTO monsters (public, name, species, health, attack, defense, speed, magic, ability)
-  VALUES (FALSE, 'Goblin', 'Goblin', 100, 16, 16, 20, 5, 'Bash');
+  VALUES ('', 'Goblin', 'Goblin', 100, 16, 16, 20, 5, 'Bash');
 
 INSERT INTO monsters (public, name, species, health, attack, defense, speed, magic, ability)
-  VALUES (FALSE, 'Dragon', 'Dragon', 200, 20, 20, 20, 30, 'Slash');
+  VALUES ('', 'Dragon', 'Dragon', 200, 20, 20, 20, 30, 'Slash');
 
 
 CREATE TABLE users (
