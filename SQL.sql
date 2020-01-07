@@ -34,10 +34,10 @@ CREATE TABLE monsters (
 );
 
 INSERT INTO monsters (public, name, species, health, attack, defense, speed, magic, ability)
-  VALUES ('', 'Goblin', 'Goblin', 100, 16, 16, 20, 5, 'Bash');
+  VALUES ('lifey', 'Goblin', 'Goblin', 100, 16, 16, 20, 5, 'Bash');
 
 INSERT INTO monsters (public, name, species, health, attack, defense, speed, magic, ability)
-  VALUES ('', 'Dragon', 'Dragon', 200, 20, 20, 20, 30, 'Slash');
+  VALUES ('lifey', 'Dragon', 'Dragon', 200, 20, 20, 20, 30, 'Slash');
 
 
 CREATE TABLE users (
@@ -48,8 +48,8 @@ CREATE TABLE users (
   email VARCHAR
 );
 
-INSERT INTO users (name, username, password, email)
-  VALUES ('Jordan', 'admin', '123', 'my@email.com');
-
-INSERT INTO users (name, username, password, email)
-  VALUES ('James', 'test', 'test', 'test@email.com');
+-- INSERT INTO users (name, username, password, email)
+--   VALUES ('Jordan', 'admin', '123', 'my@email.com');
+--
+-- INSERT INTO users (name, username, password, email)
+--   VALUES ('James', 'test', 'test', 'test@email.com');
