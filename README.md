@@ -4,7 +4,7 @@
 - Live Application - https://complete-compendium.herokuapp.com/
 - Frontend Github - https://github.com/Jordan-Morales/compendium
 
-### Tools and technologies:
+## Tools and technologies:
 
 - Node.js v4.x
 - pg-promise v5.x
