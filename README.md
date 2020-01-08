@@ -1,4 +1,8 @@
 # CCSSM-API
+# by Jordan Morales
+
+- Live Application - https://complete-compendium.herokuapp.com/
+- Frontend Github - https://github.com/Jordan-Morales/compendium
 
 ### Tools and technologies:
 
