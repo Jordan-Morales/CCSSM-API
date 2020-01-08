@@ -11,3 +11,5 @@
 - PostgreSQL v9.4
 - Bluebird v3.x
 - cors
+- bcrypt
+- express
