@@ -13,3 +13,7 @@
 - cors
 - bcrypt
 - express
+
+### Update
+
+- Update to Heroku Stack-22
